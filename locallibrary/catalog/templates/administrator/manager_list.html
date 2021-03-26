@@ -1,0 +1,103 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Xavier Library Managers</title>{% endblock %}
+
+{% block content %}
+
+	<!--================Banner Area =================-->
+        <section class="banner_area">
+            <div class="container">
+                <div class="banner_inner_text">
+                    <h2>List of Managers</h2>
+                    <p>See the managers of this website</p>
+                </div>
+            </div>
+        </section>
+    <!--================End Banner Area =================-->
+	
+	<!--================Search Area =================-->
+		<br>
+		<div class="row" style="margin: 1em 4em;">
+			<div class="col-lg-6">
+				<a style="margin-left: 9%" class="btn btn-info" href="{% url 'add-manager' %}"><i class="fa fa-user" aria-hidden="true"></i> Add manager</a><br>
+			</div>
+			<div class="col-lg-5">
+				<div class="blog_right_sidebar">
+				<aside class="r_widget search_widget">
+					<div class="input-group">
+						<form method='GET' action='/catalog/managers'>
+							<input type="text" class="form-control" name='q' placeholder="Search" aria-label="Search">
+							<span class="input-group-btn">
+								<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
+							</span>
+							<p style="color: gray">Tip: You can search for the username, first name, or last name!</p>
+						</form><br>
+					</div>
+				</aside>
+				</div>
+			</div>
+			<div>
+				<form method='GET' action='/catalog/managers'>
+					<input type="hidden"/>
+					<button class="btn btn-danger" type="submit">Clear</button>
+				</form>
+			</div>
+		</div>
+	<!--================End Search Area =================-->
+	
+	<!--================ Leave a Review Area =================-->
+		<section class="blog_main_area">
+        <div class="container">
+        <div class="col-lg-12">
+        <div class="single_blog_inner">
+		<div class="blog_comment"><br><br>
+		{% if user_list %}
+		{% for user in user_list %}
+		<div class="media">
+			<div class='user-pic-container'>
+				<img src="{% static 'img/comment/user-default.png' %}" alt="">
+			</div>
+			
+			<!-- user icon -->
+			<div class="d-flex">
+				<h4>{{ user.username }}</h4>
+				<h4>joined: <span style="color: grey">{{ user.date_joined }}</span></h4>
+				<h4>last login: <span style="color: grey">{{ user.last_login }}</span></h4>		
+			</div>
+			<!-- review/comment -->
+			<div class="media-body">
+				<h5>Name: <span style="color: blue">{{user.first_name}} {{user.last_name}}</span></h5>
+				<h5>ID: <span style="color: darkblue">{{user.profile.ID_num}}</span></h5>
+				<h5>email: <span style="color: darkblue">{{user.email}}</span></h5>
+			</div>
+		</div><hr>	
+		{% endfor %}
+		
+		{% else %}
+			<section class="get_in_touch_area p_100">
+					<div class="container">
+						<div class="row get_touch_inner">
+							<div class="col-lg-5" style="float: right">                   
+								<img style="width: 70%; float: right" src="{% static 'img/404.png' %}">
+							</div>
+							<div style="padding-top: 5%" class="col-lg-6">
+								<h2>
+								<p>No managers found in the system.</p>
+								<br><br>						
+								<a class="more_btn" href="{% url 'add-manager' %}" style="margin-left: 22%">Add a manager now!</a>
+								<br><br>
+								</h2>		  
+							</div>
+						</div>
+					</div>
+			</section>
+		{% endif %}
+		</div>
+		</div>
+		</div>
+		</div>
+		</section><br><br>
+	<!--================ End Leave a Review Area =================-->
+
+{% endblock %}

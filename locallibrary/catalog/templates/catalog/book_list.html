@@ -1,0 +1,108 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Xavier Library Books</title>{% endblock %}
+
+{% block content %}
+
+	<!--================Banner Area =================-->
+       <section class="banner_area">
+           <div class="container">
+               <div class="banner_inner_text">
+                   <h2>Browse our books</h2>
+                   <p>Help us find what you're looking for!</p>
+               </div>
+           </div>
+       </section>
+    <!--================End Banner Area =================-->
+
+  <!--================ Book Tiles Area =================-->
+	
+		<!--================Search Area =================-->
+		<br>
+		<div class="row" style="margin: 3em 4em;">
+			<div class="col-lg-6">
+				{% if user.is_staff and user.groups.all.0.name == 'Manager' %}
+				<a class="btn btn-info" href="{% url 'add-book' %}"><i class="fa fa-book" aria-hidden="true"></i> Add book</a>
+				{% endif %}
+			</div>
+			<div class="col-lg-5">
+				<div class="blog_right_sidebar">
+				<aside class="r_widget search_widget">
+					<div class="input-group">
+						<form method='GET' action='/catalog/books'>
+							<input type="text" class="form-control" name='q' placeholder="Search" aria-label="Search">
+							<span class="input-group-btn">
+								<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
+							</span>
+						</form><br>
+					</div>
+				</aside>
+				</div>
+			</div>
+			<div>
+				<form method='GET' action='/catalog/books'>
+					<input type="hidden"/>
+					<button class="btn btn-danger" type="submit">Clear</button>
+				</form>
+			</div>
+		</div>
+		<!--================End Search Area =================-->
+
+  <div class="colorlib-shop">
+  {% if book_list %}     <!-- check whether there are books in the database -->
+			<div class="container-fluid">
+				<div class="row">
+    {% for book in book_list %}
+					<div class="col-md-2 col-sm-3 col-xs-6 text-center animate-box">
+						<div class="product-entry">
+							<a href="{{ book.get_absolute_url }}">
+							<div class="product-img" style="background-image: url({{ book.book_cover.url }});">
+								<div class="cart">
+									<!--<p>
+										<span class="addtocart"><a href="#"><i class="icon-cart"></i></a></span> 
+										<span><a href="#"><i class="icon-eye"></i></a></span> 
+										<span><a href="#"><i class="icon-heart3"></i></a></span>
+										<span><a href="#"><i class="icon-pie-chart"></i></a></span>
+									</p>-->
+								</div>
+						</div>
+						<div class="desc">
+								{% if user.is_staff and user.groups.all.0.name == 'Manager' %}
+								<a class="btn btn-success" href="{% url 'edit-book' book.id %}">edit</a>
+								<a class="btn btn-danger" href="{% url 'delete-book' book.id %}">delete</a><br><br>
+								{% endif %}
+								<h3>{{ book.title }}</a></h3>
+								<p class="price"><span>by {{book.author.all|join:"<br>"}}</span></p>		<!-- get all authors and join via new line -->
+						</div>
+						</div>
+					</div>
+    {% endfor %}
+				</div>
+			</div>
+  {% else %}
+    <section class="get_in_touch_area p_100">
+            <div class="container">
+                <div class="row get_touch_inner">
+					<div class="col-lg-5" style="float: right">                   
+					  <img style="width: 70%; float: right" src="{% static 'img/empty-shelf.png' %}">
+                    </div>
+					<div style="padding-top: 5%" class="col-lg-6">
+							<h2>
+							<p>No books found in the library.</p>
+							<br><br>						
+							<a class="more_btn" href="{% url 'books' %}" style="margin-left: 12%">Clear search and refresh</a>
+							<br><br>
+							</h2>
+                      
+                    </div>
+                </div>
+            </div>
+    </section>
+  {% endif %}  
+  </div>
+  
+<br><br>
+   <!--================End Book Tiles Area =================-->
+  
+{% endblock %}

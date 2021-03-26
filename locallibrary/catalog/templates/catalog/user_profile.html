@@ -1,0 +1,102 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Xavier Library Profile</title>{% endblock %}
+
+{% block content %}
+
+	<!--================Banner Area =================-->
+       <section class="banner_area">
+           <div class="container">
+               <div class="banner_inner_text">
+                   <h2>My Profile</h2>
+                   <p>Check your personal information!</p>
+               </div>
+           </div>
+       </section>
+    <!--================End Banner Area =================-->
+	
+    <!--================User Details Area =================-->
+		<section class="get_in_touch_area p_100">
+            <div class="container">
+                <div class="row get_touch_inner">
+                    <div class="col-lg-6">
+                        <div>
+                            <div class="l_title">
+								<img src="{% static 'img/icon/title-icon.png' %}" alt="">
+                                <h6>User details</h6>
+                                <h2>Here's all the basic information from you!</h2>
+                            </div>
+							<img style="width: 50%; margin-left: 20%" class="img-fluid" src="{% static 'img/profile.png' %}" alt="">
+                        </div>
+                    </div>
+					<div class="col-lg-6">                   
+					  <h6>Username:</h6>
+					  <h2>{{ user.username }}</h2><br>
+					  <h6>Full name:</h6>
+					  <h2>{{ user.first_name }} {{ user.last_name }}</h2><br>
+					  <h6>Email address:</h6>
+					  <h2>{{ user.email }}</h2><br>
+					  <h6>ID Number:</h6>
+					  <h2>{{ user.profile.ID_num }}</h2><br>
+					  <h6>Role:</h6>
+					  <h2>{{ user.profile.role }}</h2><br><br>
+					  <a style="margin-left: 25%" class="btn submit_btn" href="{% url 'change-password' %}">Change Password</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!--================End User Details Area =================-->
+	
+	<!--================Review History Area =================-->
+	<section class="blog_main_area">
+			<div class="container">
+				<div class="col-lg-12">
+				<div class="single_blog_inner">
+					<div class="blog_comment">
+					<h3>Review History ({{ review_list.all|length }})</h3><hr>
+					
+					<!-- check whether there are reviews from this user -->
+					{% if review_list %}
+					{% for review in review_list %}  <!-- code to iterate across each review; Django preset -->		
+					<div class="media">
+					<div class='author-book-pic-container'>
+						<img src="{{ review.book.book_cover.url }}">
+					</div>
+					
+					<!-- book details -->
+					<div class="media-body">
+						<a href="{{ review.book.get_absolute_url }}">{{ review.book.title }}</a>
+						<h6>Posted on: <span style="color: darkblue">{{ review.date_published }}</span></h6><br>
+						
+						<!-- star rating -->
+						<div class='star-rating-container'>
+						{% with ''|center:5 as range %}
+						{% for rating in range %}
+							{% if forloop.counter <= review.rating %}
+							<img src="{% static 'img/comment/yellow-star.png' %}" alt="">
+							{% else %}
+							<img src="{% static 'img/comment/grey-star.png' %}" alt="">
+							{% endif %}
+						{% endfor %}
+						{% endwith %}		
+						</div>	
+						
+						<p>{{ review.review|linebreaks }}</p>		
+					</div>
+					</div><hr><br>
+					{% endfor %}
+					
+					<!-- if there are no reviews, state 'no reviews' -->
+					{% else %}
+						<p>You haven't made any reviews yet.</p>
+					{% endif %}
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+	</section><br>
+	 <!--================End Review History Area =================-->
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Xavier Library Add Book Copy</title>{% endblock %}
+
+{% block content %}
+
+  <!--================Banner Area =================-->
+       <section class="banner_area">
+           <div class="container">
+               <div class="banner_inner_text">
+                   <h2>Add Book Copy</h2>
+                   <p>Let users know more copies are coming!</p>
+               </div>
+           </div>
+       </section>
+  <!--================End Banner Area =================-->
+
+  
+  <!--================Login Forms Area =================-->
+        <section class="get_in_touch_area p_100">
+            <div class="container">
+                <div class="row get_touch_inner">
+                    <div class="col-lg-5">
+                        <form class="contact_us_form row" style="margin: 0 !important" method="post">
+						  {% csrf_token %}
+						  <table class="table-fit">
+						  {% for field in form %}
+							<tr><td>
+							  <div class="form-group col-lg-11 copy-area">
+								  {%if field.field.required %}
+								  <span style="color: red">* </span>
+								  {% endif %}
+								  {{ field.label_tag }}
+								  {{ field }}
+							  </div></td></tr>
+							  {% if field.help_text %}
+								<tr><td><small style="color: grey">{{ field.help_text }}</small></td></tr>
+							  {% endif %}
+							  {% for error in field.errors %}
+								<tr><td><p style="color: red">{{ error }}</p></td></tr>
+							  {% endfor %}
+						  {% endfor %}
+						  </table>
+						  <input style="margin: 0 auto; margin-top: 10%" type="submit" class="btn submit_btn form-control" value="add instance" />
+						</form>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="touch_details">
+                            <div class="l_title">
+								<img src="{% static 'img/icon/title-icon.png' %}" alt="">
+                                <h6>Accomplish the form</h6>
+                                <h2>Specify the details of the book instance!</h2>
+                            </div>
+							<img class="img-fluid" src="{% static 'img/book-copies.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!--================End Login Forms Area =================-->
+  
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Xavier Library Authors</title>{% endblock %}
+
+{% block content %}
+
+		<!--================Banner Area =================-->
+        <section class="banner_area">
+            <div class="container">
+                <div class="banner_inner_text">
+                    <h2>Meet the authors</h2>
+                    <p>Find related books under the same writer!</p>
+                </div>
+            </div>
+        </section>
+        <!--================End Banner Area =================-->
+		
+		<!--================List Area =================-->
+		<br><br>
+		<div class="container">
+		<div class="row">
+			<div style="margin: 0 auto" class="[ col-xs-12 col-sm-offset-2 col-sm-9 ]">
+				{% if author_list %}     <!-- check whether there are authors in the database -->
+				<ul class="event-list">
+					{% for author in author_list %}
+					<li>
+						<img src="{% static 'img/comment/user-default.png' %}" />
+						<div class="info">
+							<h2 class="title"><a href="{{ author.get_absolute_url }}">{{ author.last_name }}, {{ author.first_name }}</a></h2>
+							<p class="desc">
+							<!-- checker for author birth and death date -->
+							{% if author.date_of_birth and author.date_of_death %}				<!-- display birth and death date if available -->
+								{{author.date_of_birth}} - {{author.date_of_death}}
+							{% elif not author.date_of_birth and author.date_of_death %}		<!-- display 'unknown' if birth date is missing -->
+								unknown - {{author.date_of_death}}
+							{% elif author.date_of_birth and not author.date_of_death %}		<!-- display 'present' if death date is missing -->
+								{{author.date_of_birth}} - present
+							{% else %}															<!-- if both dates are missing, display 'no birth data' -->
+								no birth data
+							{% endif %}							
+							</p>
+							<ul>
+								<li>{{author.book_set.all|length}} book{% if author.book_set.all|length > 1 or author.book_set.all|length == 0 %}s{% endif %} found 
+								{% if author.book_set.all|length > 0 %}<span class="fa fa-check"></span>{% else %}<span class="fa fa-remove"></span>{% endif %}</li>
+							</ul>
+						</div>
+						<div class="social">
+							<ul>
+								<li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
+								<li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
+								<li class="instagram" style="width:33%;"><a href="#instagram"><span class="fa fa-instagram"></span></a></li>
+							</ul>
+						</div>
+					</li>					    
+					{% endfor %}
+				</ul>
+				{% else %}
+					<p>There are no authors in the library.</p>
+				{% endif %}				  
+			</div>
+		</div>
+	</div>	
+		
+		<!--================End List Area =================-->
+
+  		{% endblock %}
+
+  

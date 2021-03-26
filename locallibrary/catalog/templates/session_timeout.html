@@ -1,0 +1,52 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Xavier Library Timeout</title>{% endblock %}
+
+{% block content %}
+
+  <!--================Banner Area =================-->
+       <section class="banner_area">
+           <div class="container">
+               <div class="banner_inner_text">
+                   <h2>Session Timeout</h2>
+				   <p>You have been logged out due to inactivity.</p>
+               </div>
+           </div>
+       </section>
+  <!--================End Banner Area =================-->
+
+   <!--================Logout Area =================-->
+        <section class="get_in_touch_area p_100">
+            <div class="container">
+                <div class="row get_touch_inner">
+                    <div style="padding-top: 10%" class="col-lg-5">
+						<h2>
+							<img src="{% static 'img/icon/f-icon-6.png' %}" alt="">
+							<a href="{% url 'login' %}" style="margin-left: -5%"><i><u>Go back to Login</u></i></a>
+							<br><br>						
+							<img src="{% static 'img/icon/f-icon-1.png' %}" alt="">
+							<a href="{% url 'signup' %}" style="margin-left: -8%"><i><u>Signup a new account</u></i></a>
+							<br><br>
+							<img src="{% static 'img/icon/f-icon-3.png' %}" alt="">
+							<a href="{% url 'index' %}" style="margin-left: -5%"><i><u>Go to Homepage</u></i></a>
+						</h2>
+						<br><br>
+						<p>Note: You may not borrow books or leave book reviews as an anonymous user.</p>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="touch_details">
+                            <div class="l_title">
+								<img src="{% static 'img/icon/title-icon.png' %}" alt="">				
+								<h6>Click the links to continue</h6>
+                                <h2>You are now browsing as a guest user.</h2>
+                            </div>
+							<img class="img-fluid" src="{% static 'img/online-library.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!--================End Logout Area =================-->
+  
+{% endblock %}

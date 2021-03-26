@@ -1,0 +1,70 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Xavier Library My Borrowed Books</title>{% endblock %}
+
+{% block content %}
+
+  <!--================Banner Area =================-->
+       <section class="banner_area">
+           <div class="container">
+               <div class="banner_inner_text">
+                   <h2>Borrowed books</h2>
+				   <p>Check the books that you have borrowed!</p>
+               </div>
+           </div>
+       </section><br><br>
+  <!--================End Banner Area =================-->
+
+  <!--================Borrowed Books List Area =================-->
+	{% if bookinstance_list %}
+	<section class="blog_main_area">
+			<div class="container">
+				<div class="col-lg-12">
+				<div class="single_blog_inner">
+					<div class="blog_comment">
+					{% for bookinst in bookinstance_list %}  		
+					<div class="media">
+					<div class='author-book-pic-container'>
+						<img src="{{ bookinst.book.book_cover.url }}">
+					</div>
+					
+					<!-- book details -->
+					<div class="media-body">
+						<a href="{% url 'book-detail' bookinst.book.pk %}" class="{% if bookinst.is_overdue %}text-danger{% endif %}">{{bookinst.book.title}}</a>
+						<p>Due: <span style="color: black" class="{% if bookinst.is_overdue %}text-danger{% endif %}">{{ bookinst.due_back }}</span></p>
+						<p>{{ bookinst.book.summary|linebreaks }}</p>		
+					</div>
+					</div><hr><br>
+					{% endfor %}
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+	</section><br>
+
+    {% else %}
+	  <section class="get_in_touch_area p_100">
+            <div class="container">
+                <div class="row get_touch_inner">
+					<div class="col-lg-5" style="float: right">                   
+					  <img style="width: 70%; float: right" src="{% static 'img/empty-shelf.png' %}">
+                    </div>
+					<div style="padding-top: 5%" class="col-lg-6">
+							<h2>
+							<p>You haven't borrowed any books yet!</p>
+							<br><br>						
+							<a class="more_btn" href="{% url 'books' %}" style="margin-left: 25%">Browse our books</a>
+							<br><br>
+							</h2>
+                      
+                    </div>
+                </div>
+            </div>
+       </section>
+    {% endif %}  
+  <!--================End Borrowed Books List Area =================-->
+	
+{% endblock %}
+

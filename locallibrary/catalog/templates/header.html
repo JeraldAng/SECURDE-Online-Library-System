@@ -1,0 +1,56 @@
+{% load static %}
+
+{% url 'index' as index_url %}
+{% url 'books' as books_url %}
+{% url 'authors' as authors_url %}
+{% url 'login' as login_url %}
+{% url 'logout' as logout_url %}
+{% url 'my-borrowed' as borrowed_url %}
+{% url 'signup' as signup_url %}
+{% url 'user-profile' username=user.username as profile_url %}
+{% url 'book-copies' as copies_url %}
+{% url 'system-logs' as logs_url %}
+{% url 'managers' as managers_url %}
+
+<!--================Header Menu Area =================-->
+        <header class="main_menu_area">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/xavier.png' %}" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item {% if request.path == index_url %} active {% endif %}"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                        <li class="nav-item {% if request.path == books_url %} active {% endif %}"><a class="nav-link" href="{% url 'books' %}">Books</a></li>
+                        <li class="nav-item {% if request.path == authors_url %} active {% endif %}"><a class="nav-link" href="{% url 'authors' %}">Authors</a></li>
+                 
+						{% if user.is_authenticated %} <!-- check whether user is staff or not (staff cannot borrow or change password) -->
+						
+						{% if user.is_staff %}
+							{% if user.groups.all.0.name == 'Manager' %}
+								<li class="nav-item {% if request.path == copies_url %} active {% endif %}"><a class="nav-link" href="{% url 'book-copies' %}">Copies</a></li>	
+							{% elif user.groups.all.0.name == 'Administrator' %}
+								<li class="nav-item {% if request.path == logs_url %} active {% endif %}"><a class="nav-link" href="{% url 'system-logs' %}">Logs</a></li>
+								<li class="nav-item {% if request.path == managers_url %} active {% endif %}"><a class="nav-link" href="{% url 'managers' %}">Managers</a></li>
+							{% endif %}
+							
+						<!--<li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>-->
+						{% else %}
+						<li class="nav-item {% if request.path == profile_url %} active {% endif %}"><a class="nav-link" href="{% url 'user-profile' username=user.username %}">My Profile</a></li>
+						<li class="nav-item {% if request.path == borrowed_url %} active {% endif %}"><a class="nav-link" href="{% url 'my-borrowed' %}">My Borrowed</a></li>						
+						{% endif %}
+						
+						<li class="nav-item {% if request.path == logout_url %} active {% endif %}"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>						
+						{% else %}
+                        <li class="nav-item {% if request.path == signup_url %} active {% endif %}"><a class="nav-link" href="{% url 'signup' %}">Sign Up</a></li>
+						<li class="nav-item {% if request.path == login_url %} active {% endif %}"><a class="nav-link" href="{% url 'login' %}">Login</a></li>						
+						{% endif %} 
+                    </ul>
+                </div>
+            </nav>
+        </header>
+<!--================End Header Menu Area =================-->

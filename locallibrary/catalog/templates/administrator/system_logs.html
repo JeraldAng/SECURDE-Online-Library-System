@@ -1,0 +1,62 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Xavier Library Logs</title>{% endblock %}
+
+{% block content %}
+
+		<!--================Banner Area =================-->
+        <section class="banner_area">
+            <div class="container">
+                <div class="banner_inner_text">
+                    <h2>System Logs</h2>
+                    <p>Check the latest system activity</p>
+                </div>
+            </div>
+        </section>
+        <!--================End Banner Area =================-->
+		
+		<!--================Logs Area =================-->
+			 <br>
+			 <div id="wrapper">
+			 <span style="color: gray">&nbsp;&nbsp;&nbsp;Tip: Click on the table headers to sort them by that category!</span>
+			  <table id="keywords" cellspacing="0" cellpadding="0">
+				<thead>
+				  <tr>
+					<th><span>Log ID</span></th>
+					<th><span>Log Name</span></th>
+					<th><span>User</span></th>
+					<th><span>Content type</span></th>
+					<th><span>Object id</span></th>
+					<th><span>Object repr</span></th>
+					<th><span>Action flag</span></th>
+					<th><span>Change Message</span></th>
+				  </tr>
+				</thead>
+				<tbody>
+				  {% for log in logs %}
+				  <tr>
+					<td>{{ log.id }}</td>
+					<td class="lalign">{{log}}</td>
+					<td>{{ log.user.username }}</td>
+					<td>{{ log.content_type }}</td>
+					<td>{{ log.object_id }}</td>
+					<td>{{ log.object_repr }}</td>
+					<td>
+					{% if log.action_flag == 1 %}
+					Addition
+					{% elif log.action_flag == 2 %}
+					Change
+					{% elif log.action_flag == 3 %}
+					Deletion
+					{% endif %}
+					</td>
+					<td>{{ log.change_message }}</td>
+				  </tr> 
+				  {% endfor %}
+				</tbody>
+			  </table>
+			 </div> 
+		<!--================End Logs Area =================-->
+
+{% endblock %}

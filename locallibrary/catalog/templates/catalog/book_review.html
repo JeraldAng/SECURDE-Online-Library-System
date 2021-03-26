@@ -1,0 +1,79 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Xavier Library Book Review</title>{% endblock %}
+
+{% block content %}
+
+	<!--================Banner Area =================-->
+       <section class="banner_area">
+           <div class="container">
+               <div class="banner_inner_text">
+                   <h2>Leave book review</h2>
+                   <p>Feel free to give our books feedback!</p>
+               </div>
+           </div>
+       </section>
+    <!--================End Banner Area =================-->
+	
+	<!--================Review Area =================-->
+		<section class="get_in_touch_area p_100" style="padding-top: 50px !important">
+            <div class="container" style="text-align: justify">
+                <div class="get_touch_inner">
+				
+					<!--================Book Summary Area =================-->
+					<div class="blog_comment">
+                        <div class="media">
+							<div class='author-book-pic-container'>
+								<img src="{{ book.book_cover.url }}">
+							</div>
+							
+							<!-- book details -->
+							<div style="padding-left: 20px" class="media-body">
+								<h6><a href="{% url 'book-detail' book.pk %}">{{ book.title }}</a></h6><br>
+								<p>{{ book.summary }}</p>	
+							</div>
+						</div>     
+                    </div><br>
+					<!--================End Book Summary Area =================-->
+					
+					<!--================Review Form Area =================-->
+					<div class="media">
+							<div class='user-pic-container'>
+							  <img src="{% static 'img/comment/user-default.png' %}" alt="">
+							</div>
+						  <div class="media-body">
+								<div style="padding-left: 15px">
+									<h5>{{ request.user }}</h5> 
+									<p style="color: darkblue">{{ form.instance.date_published }}</p>
+								</div><br>
+								
+								<div class="contact_us_form" style="margin-top: 0 !important">
+									<form method = "POST">
+										{% csrf_token %}
+										{% for field in form %}
+										  <div class="form-group comment-area col-lg-12">
+											  <span style="color: red">* </span>
+											  {{ field.label_tag }}<br>
+											  {{ field }}
+										  </div>
+										  {% for error in field.errors %}
+											<p style="color: red">{{ error }}</p>
+										  {% endfor %}
+										{% endfor %}
+
+										<input style="float: right" type="submit" class="btn submit_btn form-control" value="post review" /><br><br>
+									</form>
+								</div>
+						  </div>
+					</div>
+					<!--================End Review Form Area =================-->
+					
+                </div>
+            </div>
+        </section>
+		
+    <!--================End Review Area =================-->
+	
+	
+{% endblock %}

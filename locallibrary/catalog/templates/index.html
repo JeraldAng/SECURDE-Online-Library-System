@@ -1,0 +1,380 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+<!--================Slider Area =================-->
+		<section class="main_slider_area">
+            <div id="main_slider" class="rev_slider" data-version="5.3.1.6">
+                <ul>
+                    <li data-index="rs-1587" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0"  data-saveperformance="off"  data-title="Creative" data-param1="01" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                        <!-- LAYER NR. 1 -->
+                        <div class="slider_text_box">
+                            <div class="tp-caption tp-resizeme first_text" 
+                            data-x="['left','left','left','left','15','center']" 
+                            data-hoffset="['0','80','80','0']" 
+                            data-y="['top','top','top','top']" 
+                            data-voffset="['400','400','400','250','180','180']" 
+                            data-fontsize="['72','72','72','50','50','30']"
+                            data-lineheight="['82','82','82','62','62','42']"
+                            data-width="['none']"
+                            data-height="none"
+                            data-whitespace="nowrape"
+                            data-type="text" 
+                            data-responsive_offset="on" 
+                            data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:0px;s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                            data-textAlign="['left','left','left','left','left','center']">Welcome to Xavier’s <br />School for Gifted <br />Youngsters</div>
+                            
+                            <div class="tp-caption tp-resizeme secand_text" 
+                                data-x="['left','left','left','left','15','center']" 
+                                data-hoffset="['0','80','80','0']" 
+                                data-y="['top','top','top','top']" 
+                                data-voffset="['575','575','575','400','320','300']"  
+                                data-fontsize="['24','24','24','18','16','16']"
+                                data-lineheight="['36','36','36','26','26','26']"
+                                data-width="['none','none','none','none','none']"
+                                data-height="none"
+                                data-whitespace="nowrape"
+                                data-type="text" 
+                                data-responsive_offset="on"
+                                data-transform_idle="o:1;"
+                                data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                                data-textAlign="['left','left','left','left','left','center']"><br /><br />
+								{% if user.is_authenticated %}
+								<span>Greetings {{ user.get_username }}!</span>
+								{% else %}
+								<span>Introducing our online library system!</span>
+								{% endif %} 
+                            </div>
+                            
+                            <div class="tp-caption tp-resizeme" 
+                                data-x="['left','left','left','left','15','center']" data-hoffset="['0','80','80','0']" 
+                                data-y="['top','top','top','top']" 
+                                data-voffset="['670','670','670','480','370','350']" 
+                                data-fontsize="['14','14','14','14']"
+                                data-lineheight="['46','46','46','46']"
+                                data-width="none"
+                                data-height="none"
+                                data-whitespace="nowrap"
+                                data-type="text" 
+                                data-responsive_offset="on" 
+                                data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]">
+                                <br /><a class="more_btn" href="{% url 'books' %}">Browse</a>
+                            </div>
+                            <div class="tp-caption tp-resizeme single_img" 
+                            data-x="['right','right','right','right','right','right']" 
+                            data-hoffset="['0','0','0','0']" 
+                            data-y="['top','top','top','top']" 
+                            data-voffset="['180','180','180','180','0']" 
+                            data-fontsize="['65','65','60','40','25']"
+                            data-lineheight="['75','75','75','50','35']"
+                            data-width="['485','485','485','485','485']"
+                            data-height="none"
+                            data-whitespace="normal"
+                            data-type="text" 
+                            data-responsive_offset="on" 
+                            data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:0px;s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                            data-textAlign="['left','left','left','left','left','center']">
+                                <img src="{% static 'img/home-slider/slider-1.png' %}" alt="">
+                            </div>
+                        </div>
+                    </li>
+                    <li data-index="rs-1588" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0"  data-saveperformance="off"  data-title="Creative" data-param1="01" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                    <!-- LAYERS -->
+                        
+					<!-- LAYERS -->
+
+                        <!-- LAYER NR. 2 -->
+                        <div class="slider_text_box">
+                            <div class="tp-caption tp-resizeme first_text" 
+                            data-x="['left','left','left','left','15','center']" 
+                            data-hoffset="['0','80','80','0']" 
+                            data-y="['top','top','top','top']" 
+                            data-voffset="['400','400','400','250','180','180']" 
+                            data-fontsize="['72','72','72','50','50','30']"
+                            data-lineheight="['82','82','82','62','62','42']"
+                            data-width="['none']"
+                            data-height="none"
+                            data-whitespace="nowrape"
+                            data-type="text" 
+                            data-responsive_offset="on" 
+                            data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:0px;s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                            data-textAlign="['left','left','left','left','left','center']">Access our library <br />anytime, anywhere.</div>
+                            
+                            <div class="tp-caption tp-resizeme secand_text" 
+                                data-x="['left','left','left','left','15','center']" 
+                                data-hoffset="['0','80','80','0']" 
+                                data-y="['top','top','top','top']" 
+                                data-voffset="['575','575','575','400','320','300']"  
+                                data-fontsize="['24','24','24','18','16','16']"
+                                data-lineheight="['36','36','36','26','26','26']"
+                                data-width="['none','none','none','none','none']"
+                                data-height="none"
+                                data-whitespace="nowrape"
+                                data-type="text" 
+                                data-responsive_offset="on"
+                                data-transform_idle="o:1;"
+                                data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                                data-textAlign="['left','left','left','left','left','center']">Connect with us through the web!
+                            </div>
+                            
+                            <div class="tp-caption tp-resizeme" 
+                                data-x="['left','left','left','left','15','center']" data-hoffset="['0','80','80','0']" 
+                                data-y="['top','top','top','top']" 
+                                data-voffset="['670','670','670','480','370','350']" 
+                                data-fontsize="['14','14','14','14']"
+                                data-lineheight="['46','46','46','46']"
+                                data-width="none"
+                                data-height="none"
+                                data-whitespace="nowrap"
+                                data-type="text" 
+                                data-responsive_offset="on" 
+                                data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]">
+                                <a class="more_btn" href="{% url 'books' %}">Browse</a>
+                            </div>
+                            <div class="tp-caption tp-resizeme single_img" 
+                            data-x="['right','right','right','right','right','right']" 
+                            data-hoffset="['0','0','0','0']" 
+                            data-y="['top','top','top','top']" 
+                            data-voffset="['180','180','180','180','0']" 
+                            data-fontsize="['65','65','60','40','25']"
+                            data-lineheight="['75','75','75','50','35']"
+                            data-width="['485','485','485','485','485']"
+                            data-height="none"
+                            data-whitespace="normal"
+                            data-type="text" 
+                            data-responsive_offset="on" 
+                            data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:0px;s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                            data-textAlign="['left','left','left','left','left','center']">
+                                <img src="{% static 'img/home-slider/slider-2.png' %}" alt="">
+                            </div>
+                        </div>
+                    </li>
+                    <li data-index="rs-1589" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0"  data-saveperformance="off"  data-title="Creative" data-param1="01" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                    <!-- LAYERS -->
+                    
+					<!-- LAYERS -->
+
+                        <!-- LAYER NR. 3 -->
+                        <div class="slider_text_box">
+                            <div class="tp-caption tp-resizeme first_text" 
+                            data-x="['left','left','left','left','15','center']" 
+                            data-hoffset="['0','80','80','0']" 
+                            data-y="['top','top','top','top']" 
+                            data-voffset="['400','400','400','250','180','180']" 
+                            data-fontsize="['72','72','72','50','50','30']"
+                            data-lineheight="['82','82','82','62','62','42']"
+                            data-width="['none']"
+                            data-height="none"
+                            data-whitespace="nowrape"
+                            data-type="text" 
+                            data-responsive_offset="on" 
+                            data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:0px;s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                            data-textAlign="['left','left','left','left','left','center']">What's trending<br/>right now?</div>
+                            
+                            <div class="tp-caption tp-resizeme secand_text" 
+                                data-x="['left','left','left','left','15','center']" 
+                                data-hoffset="['0','80','80','0']" 
+                                data-y="['top','top','top','top']" 
+                                data-voffset="['575','575','575','400','320','300']"  
+                                data-fontsize="['24','24','24','18','16','16']"
+                                data-lineheight="['36','36','36','26','26','26']"
+                                data-width="['none','none','none','none','none']"
+                                data-height="none"
+                                data-whitespace="nowrape"
+                                data-type="text" 
+                                data-responsive_offset="on"
+                                data-transform_idle="o:1;"
+                                data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                                data-textAlign="['left','left','left','left','left','center']">Don't miss out on the latest books!
+                            </div>
+                            
+                            <div class="tp-caption tp-resizeme" 
+                                data-x="['left','left','left','left','15','center']" data-hoffset="['0','80','80','0']" 
+                                data-y="['top','top','top','top']" 
+                                data-voffset="['670','670','670','480','370','350']" 
+                                data-fontsize="['14','14','14','14']"
+                                data-lineheight="['46','46','46','46']"
+                                data-width="none"
+                                data-height="none"
+                                data-whitespace="nowrap"
+                                data-type="text" 
+                                data-responsive_offset="on" 
+                                data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:[100%];s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]">
+                                <a class="more_btn" href="{% url 'books' %}">Browse</a>
+                            </div>
+                            <div class="tp-caption tp-resizeme single_img" 
+                            data-x="['right','right','right','right','right','right']" 
+                            data-hoffset="['0','0','0','0']" 
+                            data-y="['top','top','top','top']" 
+                            data-voffset="['180','180','180','180','0']" 
+                            data-fontsize="['65','65','60','40','25']"
+                            data-lineheight="['75','75','75','50','35']"
+                            data-width="['485','485','485','485','485']"
+                            data-height="none"
+                            data-whitespace="normal"
+                            data-type="text" 
+                            data-responsive_offset="on" 
+                            data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:0px;s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
+                            data-textAlign="['left','left','left','left','left','center']">
+                                <img src="{% static 'img/home-slider/slider-4.png' %}" alt="">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!--================End Slider Area =================-->
+        
+        <!--================Book Feature Area =================-->
+        <section class="feature_area">
+            <div class="container">
+                <div class="c_title">
+                    <img src="{% static 'img/icon/title-icon.png' %}" alt="">
+                    <h6>Here are the books that were recently added</h6>
+                    <h2>Check the latest books!</h2>
+                </div>
+                <div class="row feature_inner">
+					{% if books %}
+					{% for book in books %}
+						<div class="col-lg-4 col-sm-6" style="margin: 0 auto">
+                        <div class="feature_item" style="height: 500px">
+                            <div>
+                                <img src="{{ book.book_cover.url }}" style="width: 100px" alt="">
+                            </div><br>
+                            <h6>{{ book.title }}</h6>
+                            <p>by {{book.author.all|join:", "}}</p>
+                            <p style="color: darkgreen">{{ book.bookinstance_set.all|length }} {% if book.bookinstance_set.all|length == 1%}Copy{% else %}Copies{% endif %}</p><br>
+                            <a class="more_btn" href="{{ book.get_absolute_url }}">Check book</a>
+                        </div>
+						</div>
+					{% endfor %}   
+					{% else %}
+						<div class="col-lg-4 col-sm-6" style="margin: 0 auto">
+                        <div class="feature_item" style="height: 500px">
+                            <div>
+                                <img src="{% static 'img/empty-shelf.png' %}" style="width: 150px" alt="">
+                            </div><br>
+                            <h6>Oops!</h6>
+                            <p>Looks like there aren't any books at the moment.</p><br>
+                            <a class="more_btn" href="{% url 'authors' %}">Check authors</a>
+                        </div>
+						</div>
+					{% endif %}
+				</div>
+            </div>
+        </section>
+        <!--================End Book Feature Area =================-->
+        
+        <!--================Review Slider Area =================-->
+        <section class="best_3d_area">
+            <div class="left_3d">
+                <div class="shap_slider_inner owl-carousel">
+                    {% if reviews %}
+					{% for review in reviews %}
+					<div class="item">
+                        <!-- star rating -->
+						<div class='star-rating-container'>
+						{% with ''|center:5 as range %}
+						{% for rating in range %}
+							{% if forloop.counter <= review.rating %}
+							<img style="width: 30px" src="{% static 'img/comment/yellow-star.png' %}" alt="">
+							{% else %}
+							<img style="width: 30px" src="{% static 'img/comment/grey-star.png' %}" alt="">
+							{% endif %}
+						{% endfor %}
+						{% endwith %}		
+						</div>	
+						
+						<p>Book Title: {{ review.book }}</p>
+                        <div class="media">
+                            <img src="{% static 'img/comment/user-default.png' %}" style="width: 50px" alt="">
+                            <div class="media-body">
+                                <h5>{{ review.user }}</h5>
+                                <h6 style="color: black">{{ review.date_published }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+					{% else %}
+					<div class="item">						
+						<p>Oops...</p>
+						<p>There are no book reviews as of the moment.</p>
+                    </div>
+					{% endif %}
+                </div>
+            </div>
+            <div class="right_text">
+                <div class="right_text_inner">
+                    <div class="text_3d">
+                        <div class="l_title">
+                            <img src="{% static 'img/icon/title-icon.png' %}" alt="">
+                            <h6>Read our reviews!</h6>
+                            <h2>We encourage our community to leave book reviews!</h2>
+                        </div>
+						<p>Our mission is to foster knowledge amongst the community through reading diverse books in our library. We want to ensure only the best quality for our readers. 
+						Please make sure to login to an account first, then you can gain access to all of our offered resources!</p>
+                    </div>
+                    <div class="shap_mobile">
+                        <img src="{% static 'img/book-stack.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Review Slider Area =================-->
+        
+        <!--================Authors Area =================-->
+        <section class="team_people_area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="team_people_text">
+                            <div class="l_title">
+                                <img src="{% static 'img/icon/title-icon.png' %}" alt="">
+                                <h6>Learn from the experts</h6>
+                                <h2>We welcome many diverse authors!</h2>
+                            </div>
+							<a class="more_btn" href="{% url 'authors' %}">Check authors</a>
+                            <p><br>We believe that each and every author has their own unique knowledge to contribute. With such diversities like our cultures, languages, beliefs, and so on, we try our very best to represent them in our library.</p>
+                            {% if authors %}
+							<p>Here are some of the latest added authors!</p>
+							<ul>
+							{% for author in authors %}
+                                <li><a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a></li>
+                            {% endfor %}
+                            </ul>
+							{% endif %}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="team_img_inner">
+                            <div class="row">
+                                <div class="col-lg-6 col-6">
+                                    <div class="team_img_item">
+                                        <img src="{% static 'img/team/people/people-1.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <div class="team_img_item">
+                                        <img src="{% static 'img/team/people/people-2.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <div class="team_img_item">
+                                        <img src="{% static 'img/team/people/people-3.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <div class="team_img_item">
+                                        <img src="{% static 'img/team/people/people-4.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><br><br>
+        <!--================End Authors Area =================-->
+        
+{% endblock %}

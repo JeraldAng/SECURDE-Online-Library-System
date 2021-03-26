@@ -1,0 +1,46 @@
+{% extends "base_generic.html" %}
+  
+{% load static %}
+
+{% block title %}<title>Xavier Library Error</title>{% endblock %}
+
+{% block content %} 
+
+<!--================Banner Area =================-->
+       <section class="banner_area">
+           <div class="container">
+               <div class="banner_inner_text">
+                   <h2>Oops! Page not found!</h2>
+                   <p>You might have entered an invalid url!</p>
+               </div>
+           </div>
+       </section>
+    <!--================End Banner Area =================-->
+
+<!--================Main 404 Page Area =================-->
+        <section class="get_in_touch_area p_100">
+            <div class="container">
+                <div class="row get_touch_inner">
+					<div class="col-lg-6" style="float: right">                   
+					  <img style="width: 70%; float: right" src="{% static 'img/404.png' %}">
+                    </div>
+					<div style="padding-top: 5%" class="col-lg-6">
+							<h2>
+							<img src="{% static 'img/icon/f-icon-3.png' %}" alt="">
+							<a href="{% url 'index' %}" style="margin-left: -5%"><i><u>Back to Homepage</u></i></a>
+							<br><br>						
+							<img src="{% static 'img/icon/f-icon-4.png' %}" alt="">
+							<a href="{% url 'books' %}" style="margin-left: -8%"><i><u>Browse our books</u></i></a>
+							<br><br>
+							<img src="{% static 'img/icon/f-icon-6.png' %}" alt="">
+							<a href="{% url 'authors' %}" style="margin-left: -5%"><i><u>Check our authors</u></i></a>
+							</h2>
+                      
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!--================End Main 404 Page Area =================-->
+	
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>{{ author.last_name }}, {{ author.first_name }} - Xavier Library Authors</title>{% endblock %}
+
+{% block content %}
+
+		<!--================Banner Area =================-->
+        <section class="banner_area">
+            <div class="container">
+                <div class="banner_inner_text">
+                    <h2>Author Details</h2>
+                    <p>Find related books under the same writer!</p>
+                </div>
+            </div>
+        </section>
+        <!--================End Banner Area =================-->
+		
+        <!--================ Author Details Area =================-->
+		<br><br>
+		<div class="container">
+				<div class="row">
+					<div class="col-md-4 d-inline-flex author-container">
+						<img src = "{% static 'img/no-author-pic.png'%}">
+					</div>
+					<div class="col-md-7">
+						<h2>Author: <b>{{ author.last_name }}, {{ author.first_name }}</b></h2><br>
+						<h5>
+						  <!-- checker for author birth and death date -->
+								{% if author.date_of_birth and author.date_of_death %}				<!-- display birth and death date if available -->
+									{{author.date_of_birth}} - {{author.date_of_death}}
+								{% elif not author.date_of_birth and author.date_of_death %}		<!-- display 'unknown' if birth date is missing -->
+									unknown - {{author.date_of_death}}
+								{% elif author.date_of_birth and not author.date_of_death %}		<!-- display 'present' if death date is missing -->
+									{{author.date_of_birth}} - present
+								{% else %}															<!-- if both dates are missing, display 'no birth data' -->
+									no birth data available
+								{% endif %}
+						</h5>
+						<div class="d-inline-flex">
+								<div class="round-icons"><img src="{% static 'img/icon/fb-icon.png' %}" /></div>
+								<div class="round-icons"><img src="{% static 'img/icon/twitter-icon.png' %}" /></div>
+								<div class="round-icons"><img src="{% static 'img/icon/instagram-icon.png' %}" /></div>
+						</div><br><br>					
+						<a class="more_btn" href="#">Follow</a>
+					</div>
+				</div>
+		</div><br><br>
+  
+		<!--================End Author Details Area =================-->
+
+		<!--================ Author Books Area =================-->
+		<section class="blog_main_area">
+			<div class="container">
+				<div class="col-lg-12">
+				<div class="single_blog_inner">
+					<div class="blog_comment">
+					<h3>Books ({{ author.book_set.all|length }})</h3><hr>
+					<!-- check whether there are books from this author -->
+					{% if author.book_set.all %}
+					{% for copy in author.book_set.all %}  <!-- code to iterate across each book; Django preset -->		
+					<div class="media">
+					<div class='author-book-pic-container'>
+						<img src="{{ copy.book_cover.url }}">
+					</div>
+					
+					<!-- book details -->
+					<div class="media-body">
+						<a href="{{ copy.get_absolute_url }}">{{ copy.title }}</a>
+						<h6>Total: {{ copy.bookinstance_set.all.count }} cop{% if copy.bookinstance_set.all.count > 1 or bookinstance_set.all.count == 0%}ies{% else %}y{% endif %} found</h6> <!-- display title of the book with url mapping, as well as number of copies -->
+						<p>{{ copy.summary|linebreaks }}</p>		
+					</div>
+					</div><hr><br>
+					{% endfor %}
+					
+					<!-- if there are no reviews, state 'no reviews' -->
+					{% else %}
+						<p>There are no books from this author yet.</p>
+					{% endif %}
+					</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</section><br>	
+		<!--================End Author Books Area =================-->
+		
+{% endblock %}

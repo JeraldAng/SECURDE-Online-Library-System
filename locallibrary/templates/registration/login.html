@@ -1,0 +1,81 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Xavier Library Login</title>{% endblock %}
+
+{% block content %}
+
+  <!--================Banner Area =================-->
+       <section class="banner_area">
+           <div class="container">
+               <div class="banner_inner_text">
+                   <h2>Login to your account</h2>
+               </div>
+           </div>
+       </section>
+  <!--================End Banner Area =================-->
+
+  
+  <!--================Login Forms Area =================-->
+        <section class="get_in_touch_area p_100">
+            <div class="container">
+                <div class="row get_touch_inner">
+                    <div class="col-lg-5">
+					
+					  <!--================Login Checker Block =================-->
+					  {% if form.errors %}
+						<p style="color: red">Your username and password didn't match. Please try again.</p>
+					  {% endif %}
+					  
+					  {% if next %}
+						{% if user.is_authenticated %}
+						  <p style="color: red">Your account doesn't have access to this page. To proceed,
+						  please login with an account that has access.</p>
+						{% else %}
+						  <p style="color: red">Please login to see this page.</p>
+						{% endif %}
+					  {% endif %}
+					   <!--================End Login Checker Block =================-->
+					
+                        <form class="contact_us_form row" method="post" action="{% url 'login' %}">
+						{% csrf_token %}
+						<table class="table-fit">
+						  <tr><td>
+						  <div class="form-group col-lg-11">
+								<span style="color: red">* </span>
+								{{ form.username.label_tag }}
+								{{ form.username }}
+                          </div><br></td>
+						  </tr>
+						  <tr><td>
+						  <div class="form-group col-lg-11">
+                                <span style="color: red">* </span>
+								{{ form.password.label_tag }}
+								{{ form.password }}
+                          </div><br></td>
+						  </tr>
+						  
+						  {# Assumes you setup the password_reset view in your URLconf #}
+						  <tr><td><a href="{% url 'password_reset' %}"><i><u>Forgot your password?</u></i></a><br><br><br></td></tr>
+						  </table>
+						  
+						  <input style="margin: 0 auto" type="submit" class="btn submit_btn form-control" value="login" />
+						  <input type="hidden" name="next" value="{{ next }}" />
+						</form>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="touch_details">
+                            <div class="l_title">
+								<img src="{% static 'img/icon/title-icon.png' %}" alt="">
+                                <h6>Enter user details</h6>
+                                <h2>Borrow books published from around the world!</h2>
+                            </div>
+							<img class="img-fluid" src="{% static 'img/world-map.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!--================End Login Forms Area =================-->
+  
+{% endblock %}

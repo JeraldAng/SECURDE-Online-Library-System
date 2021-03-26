@@ -1,0 +1,106 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}<title>Xavier Library Book Copies</title>{% endblock %}
+
+{% block content %}
+
+	<!--================Banner Area =================-->
+       <section class="banner_area">
+           <div class="container">
+               <div class="banner_inner_text">
+                   <h2>Check Book Copies</h2>
+                   <p>Find each and every book instance!</p>
+               </div>
+           </div>
+       </section>
+    <!--================End Banner Area =================-->
+	
+	<!--================Search Area =================-->
+		<br>
+		<div class="row" style="margin: 3em 4em;">
+			<div class="col-lg-6">
+				<a style="margin-left: 9%" class="btn btn-info" href="{% url 'add-copy' %}"><i class="fa fa-book" aria-hidden="true"></i> Add copy</a><br>
+			</div>
+			<div class="col-lg-5">
+				<div class="blog_right_sidebar">
+				<aside class="r_widget search_widget">
+					<div class="input-group">
+						<form method='GET' action='/catalog/copies'>
+							<input type="text" class="form-control" name='q' placeholder="Search" aria-label="Search">
+							<span class="input-group-btn">
+								<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
+							</span>
+							<p style="color: gray">Tip: You can search for the book title or reservation id!</p>
+						</form><br>
+					</div>
+				</aside>
+				</div>
+			</div>
+			<div>
+				<form method='GET' action='/catalog/copies'>
+					<input type="hidden"/>
+					<button class="btn btn-danger" type="submit">Clear</button>
+				</form>
+			</div>
+		</div>
+		<!--================End Search Area =================-->
+	
+	<!--================List Area =================-->
+		<br><br>
+		<div class="container">
+		<div class="row">
+			<div style="margin: 0 auto" class="[ col-xs-12 col-sm-offset-2 col-sm-9 ]">
+				{% if bookinstance_list %}     <!-- check whether there are book instances in the database -->
+					{% for copy in bookinstance_list %}
+						<div class="media">
+						<div class='author-book-pic-container'>
+							<img src="{{ copy.book.book_cover.url }}">
+						</div>
+						
+						<div class="media-body" style="margin-left: 30px">
+							<a href="{{ copy.book.get_absolute_url }}">{{ copy.book.title }}</a>
+							<h6>ID: <span style="color: gray">{{ copy.id }}</span></h6><br>
+							<h6>status: <span style="color: {% if copy.status == 'a'%}green{% else %}red{% endif %}">
+							{% if copy.status == 'a' %}
+								Available
+							{% elif copy.status == 'r' %}
+								Reserved
+							{% endif %}</span>
+							{% if copy.due_back != null %}
+								<h6>Due back: <span style="color: darkblue">{{ copy.due_back }}</span></h6>
+								<h6>Borrower: <span style="color: darkblue">{{ copy.borrower.first_name }} {{ copy.borrower.last_name }} ({{ copy.borrower.username }})</span></h6>
+							{% endif %}
+							</span></h6><br>
+							<a class="btn btn-success" href="{% url 'edit-copy' copy.id %}">edit copy</a>&nbsp;&nbsp;&nbsp;
+							<a class="btn btn-danger" href="{% url 'delete-copy' copy.id %}">delete copy</a>					
+						</div>
+						</div><hr><br>		    
+					{% endfor %}
+				{% else %}
+					<section class="get_in_touch_area p_100">
+							<div class="container">
+								<div class="row get_touch_inner">
+									<div class="col-lg-5" style="float: right">                   
+									  <img style="width: 70%; float: right" src="{% static 'img/empty-shelf.png' %}">
+									</div>
+									<div style="padding-top: 5%" class="col-lg-6">
+											<h2>
+											<p>No book copies found in the library.</p>
+											<br><br>						
+											<a class="more_btn" href="{% url 'book-copies' %}" style="margin-left: 12%">Clear search and refresh</a>
+											<br><br>
+											</h2>
+									  
+									</div>
+								</div>
+							</div>
+					</section>
+				{% endif %}				  
+			</div>
+		</div>
+	</div>	
+		
+	<!--================End List Area =================-->
+
+{% endblock %}
